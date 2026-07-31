@@ -1,0 +1,14 @@
+# Optional configuration file for Netlify. You do NOT need to do anything
+# with this file — Netlify reads it automatically if you deploy by
+# connecting a GitHub repo. If you use the drag-and-drop method described
+# in README.md, this file is simply ignored, which is fine.
+
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

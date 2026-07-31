@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jordan Alexis — Digital Calling Card</title>
+  <meta name="description" content="Digital calling card — save contact and scan for full portfolio." />
+
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/card.css" />
+</head>
+<body>
+
+  <main class="card-page">
+    <p class="eyebrow no-print">Digital Calling Card</p>
+
+    <div class="card-stack" id="card-stack">
+      <!-- FRONT -->
+      <section class="business-card business-card--front">
+        <div class="bc-photo">
+          <img id="bc-photo" src="" alt="" />
+        </div>
+        <div class="bc-text">
+          <h1 id="bc-name"></h1>
+          <p class="bc-tagline" id="bc-tagline"></p>
+          <hr class="bc-divider" />
+          <p class="bc-line" id="bc-phone"></p>
+          <p class="bc-line" id="bc-email"></p>
+        </div>
+      </section>
+
+      <!-- BACK -->
+      <section class="business-card business-card--back">
+        <div class="bc-qr" id="bc-qr"></div>
+        <p class="bc-scan-label">Scan for full portfolio</p>
+      </section>
+    </div>
+
+    <div class="card-actions no-print">
+      <button id="save-contact-btn" class="btn btn--primary">Save Contact</button>
+      <button id="print-card-btn" class="btn btn--outline">Print Card</button>
+      <a href="index.html" class="btn btn--ghost">View Full Portfolio</a>
+    </div>
+
+    <p class="print-hint no-print">
+      "Print Card" opens your browser's print dialog sized to a standard
+      3.5&Prime; &times; 2&Prime; business card. Choose "Save as PDF" as the
+      printer to export a print-ready file, or print directly on card stock.
+    </p>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/card.js"></script>
+</body>
+</html>
