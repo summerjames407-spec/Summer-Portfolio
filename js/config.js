@@ -54,10 +54,14 @@ const SITE_CONFIG = {
   // ---- Experience / Resume section ----
   // Set "show" to true once you have real experience to list.
   experience: {
-    show: false,
+    show: true,
     items: [
-      // Example — copy this pattern to add more rows:
-      // { title: "Regional Print Campaign — ACME Denim", year: "2026" }
+      {
+        year: "October 2024",
+        title: "Paid promotional shoot — youth program (website imagery)"
+      }
+      // To add another, copy the block above and put a comma between them:
+      // ,{ year: "2026", title: "Lookbook — Boutique Name" }
     ]
   },
 
