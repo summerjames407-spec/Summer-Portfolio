@@ -398,6 +398,11 @@ section {
 .form-status.success { color: #a9d8b8; }
 .form-status.error { color: #e6a8a8; }
 
+.form-status.error a {
+  color: var(--gold-light);
+  text-decoration: underline;
+}
+
 .contact-direct {
   display: flex;
   flex-direction: column;

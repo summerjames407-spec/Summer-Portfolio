@@ -157,14 +157,38 @@
   // Note: read the fields via getElementById, NOT form.name / form.email.
   // The form now carries name="contact", so form.name returns that string
   // rather than the name input.
+  // If the post fails for any reason, don't strand the sender with their
+  // typing on screen and nowhere to put it — hand them a one-tap email
+  // with everything they wrote already filled in. A casting director who
+  // hits an error should never have to retype anything.
+  function offerEmailFallback(name, email, message) {
+    const subject = "Portfolio inquiry from " + (name || "your website");
+    const lines = [message, "", "Reply to: " + email];
+
+    statusEl.textContent = "Sorry — that didn't go through. ";
+    statusEl.className = "form-status error";
+
+    const link = document.createElement("a");
+    link.href =
+      "mailto:" + cfg.contact.email +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(lines.join("\n"));
+    link.textContent = "Tap here to send it as an email instead — nothing you wrote is lost.";
+    statusEl.appendChild(link);
+  }
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
     const body = new URLSearchParams({
       "form-name": "contact",
-      name: document.getElementById("name").value.trim(),
-      email: document.getElementById("email").value.trim(),
-      message: document.getElementById("message").value.trim()
+      name: name,
+      email: email,
+      message: message
     });
 
     submitBtn.disabled = true;
@@ -186,11 +210,8 @@
     } catch (err) {
       // Also the expected path when previewing the page off a hard drive,
       // where there's no Netlify to receive the post.
-      statusEl.textContent =
-        "Sorry — that didn't go through. Please email me directly at " +
-        cfg.contact.email + ".";
-      statusEl.className = "form-status error";
       console.error(err);
+      offerEmailFallback(name, email, message);
     } finally {
       submitBtn.disabled = false;
     }
