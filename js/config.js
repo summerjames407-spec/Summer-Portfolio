@@ -34,6 +34,9 @@ const SITE_CONFIG = {
     // change the label and value. Keep the comma at the end of each line.
     stats: [
       { label: "Height", value: "5'2\"" },
+      { label: "Bust", value: "32\"" },
+      { label: "Waist", value: "25\"" },
+      { label: "Hips", value: "35\"" },
       { label: "Dress", value: "Small" },
       { label: "Shoe", value: "7.5 (US)" },
       { label: "Hair", value: "Dirty Blonde" },
