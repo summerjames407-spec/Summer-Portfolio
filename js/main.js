@@ -66,7 +66,7 @@
 
   function closeLightbox() {
     lightbox.classList.remove("is-open");
-    lightboxImg.src = "";
+    lightboxImg.removeAttribute("src");
   }
 
   document.getElementById("lightbox-close").addEventListener("click", closeLightbox);

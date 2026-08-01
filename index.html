@@ -123,7 +123,9 @@
   <!-- ============ LIGHTBOX ============ -->
   <div class="lightbox" id="lightbox">
     <button class="lightbox__close" id="lightbox-close" aria-label="Close">&times;</button>
-    <img id="lightbox-img" src="" alt="" />
+    <!-- No src until a photo is opened: an empty src= makes the browser
+         re-request the page itself on every load. -->
+    <img id="lightbox-img" alt="" />
   </div>
 
   <!-- ============ FOOTER ============ -->
