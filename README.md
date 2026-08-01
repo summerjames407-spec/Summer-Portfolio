@@ -10,17 +10,17 @@ what you're on.
 
 | What | Address |
 |---|---|
-| **Your portfolio** | `https://tangerine-faloodeh-35b6f2.netlify.app` |
-| **Your calling card** | `https://tangerine-faloodeh-35b6f2.netlify.app/card.html` |
+| **Your portfolio** | `https://sjamesportfolio.netlify.app` |
+| **Your calling card** | `https://sjamesportfolio.netlify.app/card.html` |
 
 Save both to your phone's home screen so they're one tap away. (In your
 browser, tap the Share button → "Add to Home Screen.")
 
-> **Want a nicer address?** In Netlify, open your site → **Site
-> configuration** → **Change site name** → type something like
-> `summer-james`. Your address becomes
-> `https://summer-james.netlify.app`. Everything keeps working, including
-> the QR codes — they figure out the address on their own.
+> **Want to change the address again?** In Netlify, open your site →
+> **Site configuration** → **Change site name**. Everything keeps
+> working, including the QR codes — they figure out the address on their
+> own. Just change it *before* printing any cards, since printed ones
+> can't update themselves.
 
 ---
 
@@ -182,8 +182,8 @@ Nothing here is required — the site is complete as is.
   tee photos are close; a proper set would strengthen the submission.
 - **Add a short video reel** — even 15 seconds of walking and turning.
   More agencies expect this now.
-- Fill in the **Experience** section once you have credits. (In
-  `config.js`, set `show: true` and add your entries.)
+- **Add credits to Experience** as you book work. In `config.js`, copy
+  the existing entry and change the year and title.
 
 **The site itself**
 - A **custom domain** like `summerjames.com` — buy one and connect it in

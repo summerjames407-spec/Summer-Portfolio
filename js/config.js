@@ -4,8 +4,8 @@
   contact info, stats, and links. Everything in quotes ("like this") can be
   safely changed. Do not delete the commas or quote marks.
 
-  After you edit this file, save it, and re-upload your site folder to
-  Netlify (see README.md, Step 5) to see the changes live.
+  Save your edit (on GitHub, tap "Commit changes") and the live site
+  updates by itself in about a minute. Nothing to re-upload.
   ==========================================================================
 */
 
@@ -13,7 +13,7 @@ const SITE_CONFIG = {
   // The live web address of your site. This is only used as a backup —
   // the QR codes now figure out the real address automatically, so they
   // keep working even if you rename the site later.
-  siteUrl: "https://tangerine-faloodeh-35b6f2.netlify.app",
+  siteUrl: "https://sjamesportfolio.netlify.app",
 
   // ---- Hero section ----
   name: "Summer James",
