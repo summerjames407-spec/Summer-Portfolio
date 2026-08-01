@@ -30,17 +30,14 @@ const SITE_CONFIG = {
       "Model based in East Amherst, New York — available for editorial, " +
       "commercial, and print work, and currently seeking agency " +
       "representation.",
-    // Real measurements go here. The dashes are on purpose — better to
-    // show nothing than to show numbers that aren't yours.
+    // To add Bust / Waist / Hips later, copy one of the lines below and
+    // change the label and value. Keep the comma at the end of each line.
     stats: [
-      { label: "Height", value: "—" },
-      { label: "Bust", value: "—" },
-      { label: "Waist", value: "—" },
-      { label: "Hips", value: "—" },
-      { label: "Dress", value: "—" },
-      { label: "Shoe", value: "—" },
-      { label: "Hair", value: "—" },
-      { label: "Eyes", value: "—" }
+      { label: "Height", value: "5'2\"" },
+      { label: "Dress", value: "Small" },
+      { label: "Shoe", value: "7.5 (US)" },
+      { label: "Hair", value: "Dirty Blonde" },
+      { label: "Eyes", value: "Green / Hazel" }
     ]
   },
 
