@@ -58,7 +58,7 @@ const SITE_CONFIG = {
     items: [
       {
         year: "October 2024",
-        title: "Promotion Photo Shoot — Youth Arts Program"
+        title: "Promotional Photo Shoot — Youth Arts Program"
       }
       // To add another, copy the block above and put a comma between them:
       // ,{ year: "2026", title: "Lookbook — Boutique Name" }
