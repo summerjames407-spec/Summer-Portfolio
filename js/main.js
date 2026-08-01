@@ -146,21 +146,20 @@
   const statusEl = document.getElementById("form-status");
   const submitBtn = document.getElementById("contact-submit");
 
+  // Supabase is talked to over its plain REST endpoint rather than via the
+  // Supabase JS library. It's the same request the library would make, but
+  // it saves visitors a ~100KB download and removes a second outside
+  // dependency the site would otherwise have to load before the form works.
   const supabaseReady =
     cfg.supabase.url &&
     cfg.supabase.anonKey &&
     !cfg.supabase.url.includes("PASTE_YOUR") &&
-    !cfg.supabase.anonKey.includes("PASTE_YOUR") &&
-    window.supabase;
-
-  const supabaseClient = supabaseReady
-    ? window.supabase.createClient(cfg.supabase.url, cfg.supabase.anonKey)
-    : null;
+    !cfg.supabase.anonKey.includes("PASTE_YOUR");
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    if (!supabaseClient) {
+    if (!supabaseReady) {
       statusEl.textContent =
         "The contact form isn't connected yet. Please email or call directly for now.";
       statusEl.className = "form-status error";
@@ -177,20 +176,34 @@
     statusEl.textContent = "Sending...";
     statusEl.className = "form-status";
 
-    const { error } = await supabaseClient.from("inquiries").insert([data]);
+    try {
+      const endpoint =
+        cfg.supabase.url.replace(/\/+$/, "") + "/rest/v1/inquiries";
 
-    submitBtn.disabled = false;
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: cfg.supabase.anonKey,
+          Authorization: "Bearer " + cfg.supabase.anonKey,
+          Prefer: "return=minimal"
+        },
+        body: JSON.stringify(data)
+      });
 
-    if (error) {
-      statusEl.textContent = "Something went wrong. Please try again or email directly.";
+      if (!res.ok) throw new Error("Supabase responded " + res.status + " " + (await res.text()));
+
+      statusEl.textContent = "Thank you! Your message has been sent.";
+      statusEl.className = "form-status success";
+      form.reset();
+    } catch (err) {
+      statusEl.textContent =
+        "Something went wrong. Please try again, or email me directly.";
       statusEl.className = "form-status error";
-      console.error(error);
-      return;
+      console.error(err);
+    } finally {
+      submitBtn.disabled = false;
     }
-
-    statusEl.textContent = "Thank you! Your message has been sent.";
-    statusEl.className = "form-status success";
-    form.reset();
   });
 
   // ---------- Footer QR + copyright ----------

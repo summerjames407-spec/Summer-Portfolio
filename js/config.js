@@ -22,7 +22,7 @@ const SITE_CONFIG = {
 
   // Path to your main photo. To swap it, upload a new photo into the
   // "images" folder and change the file name below to match exactly.
-  headshot: "images/headshot.svg",
+  headshot: "images/headshot.jpg",
 
   // ---- About / Stats section ----
   about: {
@@ -44,14 +44,11 @@ const SITE_CONFIG = {
   // ---- Photo gallery ----
   // Add, remove, or reorder lines here. Each line is one photo.
   gallery: [
-    "images/gallery-1.svg",
-    "images/gallery-2.svg",
-    "images/gallery-3.svg",
-    "images/gallery-4.svg",
-    "images/gallery-5.svg",
-    "images/gallery-6.svg",
-    "images/gallery-7.svg",
-    "images/gallery-8.svg"
+    "images/gallery-1.jpg",
+    "images/gallery-2.jpg",
+    "images/gallery-3.jpg",
+    "images/gallery-4.jpg",
+    "images/gallery-5.jpg"
   ],
 
   // ---- Experience / Resume section ----
