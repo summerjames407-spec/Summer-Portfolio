@@ -7,6 +7,15 @@
 (function () {
   const cfg = SITE_CONFIG;
 
+  // The real web address this page is being viewed at. Using this (instead
+  // of the value typed into config.js) means the QR code always points at
+  // the right place, even after renaming the site or adding a custom
+  // domain. Falls back to config.js when opened straight off a hard drive.
+  const liveUrl =
+    location.protocol === "http:" || location.protocol === "https:"
+      ? location.origin
+      : cfg.siteUrl;
+
   // ---------- Hero ----------
   document.getElementById("hero-photo").src = cfg.headshot;
   document.getElementById("hero-photo").alt = cfg.name;
@@ -188,7 +197,7 @@
   if (window.QRCode) {
     const qrHolder = document.createElement("canvas");
     document.getElementById("footer-qr").appendChild(qrHolder);
-    window.QRCode.toCanvas(qrHolder, cfg.siteUrl, {
+    window.QRCode.toCanvas(qrHolder, liveUrl, {
       width: 128,
       margin: 1,
       color: { dark: "#221b12", light: "#f8f2e4" }

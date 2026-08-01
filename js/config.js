@@ -10,16 +10,15 @@
 */
 
 const SITE_CONFIG = {
-  // The live web address of your site once it's deployed on Netlify.
-  // Example: "https://jordan-alexis-model.netlify.app"
-  // Leave the placeholder for now — you'll come back and update this
-  // AFTER you deploy for the first time (see README.md, Step 5).
-  siteUrl: "https://your-site-name.netlify.app",
+  // The live web address of your site. This is only used as a backup —
+  // the QR codes now figure out the real address automatically, so they
+  // keep working even if you rename the site later.
+  siteUrl: "https://tangerine-faloodeh-35b6f2.netlify.app",
 
   // ---- Hero section ----
-  name: "Jordan Alexis",
-  tagline: "Editorial. Commercial. Runway-ready.",
-  location: "Based in Los Angeles, CA",
+  name: "Summer James",
+  tagline: "Editorial. Commercial. Ready to work.",
+  location: "Based in East Amherst, NY",
 
   // Path to your main photo. To swap it, upload a new photo into the
   // "images" folder and change the file name below to match exactly.
@@ -28,18 +27,20 @@ const SITE_CONFIG = {
   // ---- About / Stats section ----
   about: {
     intro:
-      "Write two to four sentences here about yourself — your experience, " +
-      "your look, and what makes you a great fit for the brands and " +
-      "agencies you want to work with.",
+      "Model based in East Amherst, New York — available for editorial, " +
+      "commercial, and print work, and currently seeking agency " +
+      "representation.",
+    // Real measurements go here. The dashes are on purpose — better to
+    // show nothing than to show numbers that aren't yours.
     stats: [
-      { label: "Height", value: "5'9\"" },
-      { label: "Bust", value: "34\"" },
-      { label: "Waist", value: "24\"" },
-      { label: "Hips", value: "35\"" },
-      { label: "Dress", value: "4 (US)" },
-      { label: "Shoe", value: "9 (US)" },
-      { label: "Hair", value: "Brown" },
-      { label: "Eyes", value: "Hazel" }
+      { label: "Height", value: "—" },
+      { label: "Bust", value: "—" },
+      { label: "Waist", value: "—" },
+      { label: "Hips", value: "—" },
+      { label: "Dress", value: "—" },
+      { label: "Shoe", value: "—" },
+      { label: "Hair", value: "—" },
+      { label: "Eyes", value: "—" }
     ]
   },
 
@@ -68,10 +69,10 @@ const SITE_CONFIG = {
 
   // ---- Contact info ----
   contact: {
-    email: "you@example.com",
-    phone: "+1 (555) 123-4567",
-    instagramHandle: "@yourhandle",
-    instagramUrl: "https://instagram.com/yourhandle",
+    email: "summerjames407@gmail.com",
+    phone: "(716) 398-2779",
+    instagramHandle: "@remmus_james",
+    instagramUrl: "https://instagram.com/remmus_james",
     tiktokHandle: "",
     tiktokUrl: "",
     website: ""

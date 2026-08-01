@@ -6,6 +6,15 @@
 (function () {
   const cfg = SITE_CONFIG;
 
+  // Work out the real address of the portfolio so the QR code and the
+  // saved contact card always point somewhere that actually loads, even
+  // if the site gets renamed later. (card.html lives next to index.html,
+  // so the site root is what we want.)
+  const liveUrl =
+    location.protocol === "http:" || location.protocol === "https:"
+      ? location.origin
+      : cfg.siteUrl;
+
   document.title = cfg.name + " — Digital Calling Card";
 
   document.getElementById("bc-photo").src = cfg.headshot;
@@ -19,7 +28,7 @@
   if (window.QRCode) {
     const qrCanvas = document.createElement("canvas");
     document.getElementById("bc-qr").appendChild(qrCanvas);
-    window.QRCode.toCanvas(qrCanvas, cfg.siteUrl, {
+    window.QRCode.toCanvas(qrCanvas, liveUrl, {
       width: 128,
       margin: 0,
       color: { dark: "#221b12", light: "#f8f2e4" }
@@ -36,7 +45,7 @@
       "TEL;TYPE=CELL:" + cfg.contact.phone,
       "EMAIL:" + cfg.contact.email
     ];
-    if (cfg.siteUrl) lines.push("URL:" + cfg.siteUrl);
+    if (liveUrl) lines.push("URL:" + liveUrl);
     if (cfg.contact.instagramUrl) lines.push("X-SOCIALPROFILE;TYPE=instagram:" + cfg.contact.instagramUrl);
     lines.push("END:VCARD");
     return lines.join("\r\n");
