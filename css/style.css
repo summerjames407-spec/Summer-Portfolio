@@ -330,6 +330,11 @@ section {
   margin-bottom: var(--space-4);
 }
 
+/* Spam trap — must stay invisible to real visitors. */
+.hidden-field {
+  display: none;
+}
+
 .contact-form label {
   font-size: 0.78rem;
   text-transform: uppercase;

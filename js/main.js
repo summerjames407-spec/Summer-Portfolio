@@ -141,64 +141,54 @@
     );
   }
 
-  // ---------- Contact form -> Supabase ----------
+  // ---------- Contact form -> Netlify Forms ----------
   const form = document.getElementById("contact-form");
   const statusEl = document.getElementById("form-status");
   const submitBtn = document.getElementById("contact-submit");
 
-  // Supabase is talked to over its plain REST endpoint rather than via the
-  // Supabase JS library. It's the same request the library would make, but
-  // it saves visitors a ~100KB download and removes a second outside
-  // dependency the site would otherwise have to load before the form works.
-  const supabaseReady =
-    cfg.supabase.url &&
-    cfg.supabase.anonKey &&
-    !cfg.supabase.url.includes("PASTE_YOUR") &&
-    !cfg.supabase.anonKey.includes("PASTE_YOUR");
-
+  // Submissions are handled by Netlify Forms. Netlify spots the
+  // data-netlify attribute on the form when the site deploys and starts
+  // catching anything posted to it — no database, no API keys.
+  //
+  // Posting it ourselves (rather than letting the browser do it) keeps the
+  // visitor on the page and lets us show the thank-you inline instead of
+  // bouncing them to a blank confirmation screen.
+  //
+  // Note: read the fields via getElementById, NOT form.name / form.email.
+  // The form now carries name="contact", so form.name returns that string
+  // rather than the name input.
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    if (!supabaseReady) {
-      statusEl.textContent =
-        "The contact form isn't connected yet. Please email or call directly for now.";
-      statusEl.className = "form-status error";
-      return;
-    }
-
-    const data = {
-      name: form.name.value.trim(),
-      email: form.email.value.trim(),
-      message: form.message.value.trim()
-    };
+    const body = new URLSearchParams({
+      "form-name": "contact",
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      message: document.getElementById("message").value.trim()
+    });
 
     submitBtn.disabled = true;
     statusEl.textContent = "Sending...";
     statusEl.className = "form-status";
 
     try {
-      const endpoint =
-        cfg.supabase.url.replace(/\/+$/, "") + "/rest/v1/inquiries";
-
-      const res = await fetch(endpoint, {
+      const res = await fetch("/", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          apikey: cfg.supabase.anonKey,
-          Authorization: "Bearer " + cfg.supabase.anonKey,
-          Prefer: "return=minimal"
-        },
-        body: JSON.stringify(data)
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString()
       });
 
-      if (!res.ok) throw new Error("Supabase responded " + res.status + " " + (await res.text()));
+      if (!res.ok) throw new Error("Netlify responded " + res.status);
 
       statusEl.textContent = "Thank you! Your message has been sent.";
       statusEl.className = "form-status success";
       form.reset();
     } catch (err) {
+      // Also the expected path when previewing the page off a hard drive,
+      // where there's no Netlify to receive the post.
       statusEl.textContent =
-        "Something went wrong. Please try again, or email me directly.";
+        "Sorry — that didn't go through. Please email me directly at " +
+        cfg.contact.email + ".";
       statusEl.className = "form-status error";
       console.error(err);
     } finally {

@@ -17,7 +17,7 @@ const SITE_CONFIG = {
 
   // ---- Hero section ----
   name: "Summer James",
-  tagline: "Editorial. Commercial. Ready to work.",
+  tagline: "Commercial. Print. Beauty.",
   location: "Based in East Amherst, NY",
 
   // Path to your main photo. To swap it, upload a new photo into the
@@ -27,8 +27,8 @@ const SITE_CONFIG = {
   // ---- About / Stats section ----
   about: {
     intro:
-      "Model based in East Amherst, New York — available for editorial, " +
-      "commercial, and print work, and currently seeking agency " +
+      "Model based in East Amherst, New York — available for commercial, " +
+      "print, and beauty work, and currently seeking agency " +
       "representation.",
     // To add Bust / Waist / Hips later, copy one of the lines below and
     // change the label and value. Keep the comma at the end of each line.
@@ -70,12 +70,9 @@ const SITE_CONFIG = {
     tiktokHandle: "",
     tiktokUrl: "",
     website: ""
-  },
-
-  // ---- Supabase (powers the contact form) ----
-  // See README.md, Step 2, for exactly where to find these two values.
-  supabase: {
-    url: "PASTE_YOUR_SUPABASE_PROJECT_URL_HERE",
-    anonKey: "PASTE_YOUR_SUPABASE_ANON_PUBLIC_KEY_HERE"
   }
+
+  // The contact form is handled by Netlify Forms, so there are no keys or
+  // passwords to store here. Messages show up in your Netlify dashboard
+  // under "Forms" — see README.md.
 };

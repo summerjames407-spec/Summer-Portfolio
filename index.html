@@ -80,7 +80,22 @@
         <hr class="divider" />
       </div>
 
-      <form class="contact-form" id="contact-form">
+      <!-- Netlify reads these attributes when the site deploys and starts
+           catching submissions automatically. "form-name" must match the
+           form's name. "bot-field" is an invisible trap: real people never
+           see it, so anything that fills it in is a spam bot. -->
+      <form
+        class="contact-form"
+        id="contact-form"
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden-field">
+          <label>Leave this empty: <input name="bot-field" /></label>
+        </p>
         <div>
           <label for="name">Name</label>
           <input type="text" id="name" name="name" placeholder="Your name" required />
