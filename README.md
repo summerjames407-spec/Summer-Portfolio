@@ -95,6 +95,12 @@ minute.
 on the site — your name, tagline, stats, photos, contact details — is
 read from there.
 
+> **One exception.** When you text or post your link, the preview card
+> that pops up (title, description, little photo) is read straight out of
+> `index.html` and `card.html`, near the top. Those apps don't run the
+> code that reads `config.js`, so **if you ever change your name or your
+> web address, update those two files too** — or just ask Claude to.
+
 **To add or swap photos:**
 
 1. In GitHub, open the **images** folder.
