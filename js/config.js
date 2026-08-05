@@ -39,7 +39,7 @@ const SITE_CONFIG = {
       { label: "Hips", value: "35\"" },
       { label: "Dress", value: "Small" },
       { label: "Shoe", value: "7.5 (US)" },
-      { label: "Hair", value: "Dirty Blonde" },
+      { label: "Hair", value: "Sandy Brown" },
       { label: "Eyes", value: "Green / Hazel" }
     ]
   },
